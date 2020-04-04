@@ -27,7 +27,9 @@ pipeline {
      stages {
         stage('Dry Run') {
             steps {
-                checkout scm
+                Cleanup()
+		        checkout scm
+		        sh "git clean -xdf"
                 echo 'Excecuting a dry run..'
                 sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml --check'
             }
@@ -61,3 +63,12 @@ pipeline {
     }
 }
 
+def Cleanup() {
+	echo "Cleaning up"
+	sh """#!/bin/bash
+		rm -rf *
+		rm -rf .*
+		ls -a
+	"""
+	echo "End of cleanup"
+}
