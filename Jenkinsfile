@@ -51,7 +51,7 @@ pipeline {
             }
         }
     }
-}
+
     post {
         always {
             node('') { // Allocates any node that is available.
