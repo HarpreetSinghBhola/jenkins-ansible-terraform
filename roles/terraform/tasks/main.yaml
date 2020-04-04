@@ -8,7 +8,7 @@
 
 - name: Executing Terraform
   terraform:
-    project_path: "{{ project_dir }}"
+    project_path: '{{ project_dir }}'
     lock: true
     force_init: yes
     state: "{{ state }}"
