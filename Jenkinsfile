@@ -27,7 +27,7 @@ pipeline {
      stages {
         stage('Dry Run') {
             steps {
-                sh 'cd /home/ec2-user/'
+                sh 'sudo cd /home/ec2-user/'
                 checkout scm
                 echo 'Excecuting a dry run..'
                 sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml --check'
