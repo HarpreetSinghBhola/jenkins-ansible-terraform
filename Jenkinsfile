@@ -1,7 +1,28 @@
 pipeline {
-    agent none // Don't allocate a global node this time.
+    agent any 
+    
     parameters {
-        string(name: 'MY_PARAMETER', defaultValue: "string", description: 'description')
+        choice(
+              name: 'Cloud_Provider',
+              choices: "aws\ndocker\ngce",
+              description: 'Name the cloud provider where you would like to deploy.')
+
+              choice(
+                  name: 'aws_region',
+                  choices: "eu-west-1\neu-west-2\nus-east-1",
+                  description: 'Name the region where you would like to deploy. This is to demonstrate the ability to set backend configuration during runtime')
+
+          string(
+              name: 'Instance_Name',
+              defaultValue: 'foo-instance',
+              description: 'Name of the instance you would like to launch.',
+              trim: 'false')
+
+          choice(
+              name: 'Terraform_State',
+              choices: "absent\npresent",
+              description: 'Specify whether you want to APPLY(present) or DESTROY(absent) the Terraform implementation.')
+        
     }
     options {
         timeout(time: 1, unit: 'HOURS')
