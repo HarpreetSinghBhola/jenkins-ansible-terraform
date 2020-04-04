@@ -29,7 +29,7 @@ pipeline {
             steps {
                 checkout scm
                 echo 'Excecuting a dry run..'
-             //   sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml --check'
+                sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml --check'
             }
         }
         stage('Waiting for User Approval') {
@@ -46,7 +46,7 @@ pipeline {
             }
             steps {
                 echo 'Excecuting Terraform Apply..'
-               // sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
+                sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
 
             }
         }
