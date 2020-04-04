@@ -1,14 +1,12 @@
 ---
 - name: Creating variable template
-  vars:
-     project_dir : "/var/lib/jenkins/workspace/erraform-Ansible-Pipeline_master"
   template:
     src: variables.tf.j2
-    dest: "{{ project_dir }}/templates/variables.tf"
+    dest: "/var/lib/jenkins/workspace/erraform-Ansible-Pipeline_master/templates/variables.tf"
 
 - name: Executing Terraform
   terraform:
-    project_path: '{{ project_dir }}'
+    project_path: "/var/lib/jenkins/workspace/erraform-Ansible-Pipeline_master"
     lock: true
     force_init: yes
     state: "{{ state }}"
