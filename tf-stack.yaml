@@ -1,0 +1,8 @@
+---
+- name: Running the job
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  tasks:
+    - import_role:
+        name: terraform 

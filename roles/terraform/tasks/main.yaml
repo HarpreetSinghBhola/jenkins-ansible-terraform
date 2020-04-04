@@ -1,0 +1,18 @@
+---
+- name: Creating variable template
+  template:
+    src: variables.tf.j2
+    dest: "/home/ec2-user/variables.tf"
+
+- name: Executing Terraform
+  terraform:
+    project_path: '/home/ec2-user/'
+    lock: true
+    force_init: yes
+    state: "{{ state }}"
+    plan_file: "vpc.plan"
+  register: tf_output
+
+- name: Print Outputs
+  debug:
+    var: tf_output
