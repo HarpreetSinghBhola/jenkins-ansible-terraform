@@ -2,6 +2,7 @@
 - name: Running the job
   hosts: localhost
   connection: local
+  become: true
   gather_facts: true
   tasks:
     - import_role:
