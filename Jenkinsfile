@@ -16,7 +16,7 @@ pipeline {
 
           choice(
               name: 'Terraform_State',
-              choices: "absent\npresent\nplanned",
+              choices: "absent\npresent",
               description: 'Select to present for creating the stack or absent to delete it')
         
     }
@@ -31,7 +31,7 @@ pipeline {
 		checkout scm
 		sh "git clean -xdf"
                 echo 'Excecuting a dry run..'
-                sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
+                sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=palnned  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
             }
         }
         stage('Waiting for User Approval') {
