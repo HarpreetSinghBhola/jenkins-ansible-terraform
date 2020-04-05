@@ -16,7 +16,7 @@ pipeline {
 
           choice(
               name: 'Terraform_State',
-              choices: "absent\npresent",
+              choices: "absent\npresent\nplanned",
               description: 'Select to present for creating the stack or absent to delete it')
         
     }
