@@ -25,12 +25,12 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '100'))
     }
      stages {
-        stage('Dry Run') {
+        stage('Creating Plan') {
             steps {
                 Cleanup()
 		checkout scm
 		sh "git clean -xdf"
-                echo 'Excecuting a dry run..'
+                echo 'Creating plan'
                 sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=planned  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
             }
         }
