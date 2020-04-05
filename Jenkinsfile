@@ -66,8 +66,8 @@ pipeline {
 def Cleanup() {
 	echo "Cleaning up"
 	sh """#!/bin/bash
-		rm -rf *
-		rm -rf .*
+		sudo rm -rf *
+		sudo rm -rf .*
 		ls -a
 	"""
 	echo "End of cleanup"
