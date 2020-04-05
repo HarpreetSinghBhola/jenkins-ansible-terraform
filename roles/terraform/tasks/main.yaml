@@ -3,6 +3,7 @@
   template:
     src: variables.tf.j2
     dest: "./variables.tf"
+  become: true
 
 - name: Executing Terraform
   terraform:
@@ -12,6 +13,7 @@
     state: "{{ state }}"
     plan_file: "vpc.plan"
   register: tf_output
+  become: true
 
 - name: Print Outputs
   debug:
