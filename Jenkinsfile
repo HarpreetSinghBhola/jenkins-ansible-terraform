@@ -51,12 +51,6 @@ pipeline {
                 sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=present  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
 
             }
-	when {
-            environment name: 'TERRAFORM_APPLY', value: 'no'
-            }
-            steps {
-                echo 'Terraform already created a plan in the previous stage.'
-            }
         }
     }
 
