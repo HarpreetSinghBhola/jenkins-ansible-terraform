@@ -31,7 +31,7 @@ pipeline {
 		checkout scm
 		sh "git clean -xdf"
                 echo 'Creating plan'
-                sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=planned  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
+                sh 'ansible-playbook  --inventory=/etc/ansible/hosts -e state=planned  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
             }
         }
         stage('Waiting for User Approval') {
@@ -48,7 +48,7 @@ pipeline {
             }
             steps {
                 echo 'Excecuting Terraform Apply..'
-                sh 'ansible-playbook -vvvv --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
+                sh 'ansible-playbook  --inventory=/etc/ansible/hosts -e state=${Terraform_State}  -e vpc_name=${VPC_Name} -e instance_name=${Instance_Name} tf-stack.yaml'
 
             }
         }
