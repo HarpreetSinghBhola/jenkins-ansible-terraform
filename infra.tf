@@ -1,4 +1,4 @@
-# vpc.tf
+#infra.tf
 # Create VPC/Subnet/Security Group/Network ACL
 provider "aws" {
   version = "~> 2.0"
@@ -208,4 +208,4 @@ resource "aws_instance" "web" {
     Name = var.instanceName
   }
 }
-# end vpc.tf
+# end 
