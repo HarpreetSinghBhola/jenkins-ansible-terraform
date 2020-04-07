@@ -2,7 +2,7 @@
 
 This project describes about deploying terraform resources using ansible & jenkins pipeline.
 
-roles/terraform/tasks/main.yml- This file invokes the terraform module in ansible and applies the ./terraform_scripts.
+roles/terraform/tasks/main.yml- This file invokes the terraform module in ansible.
 
 templates/variables.tf.j2- Ansible uses Jinja2 templating to enable dynamic expressions and access to variables. This is the file used to subsitute the values of variables in terraform.
 
