@@ -1,5 +1,5 @@
 ---
-- name: Running the job
+- name: Running the jobss
   hosts: localhost
   connection: local
   gather_facts: true
